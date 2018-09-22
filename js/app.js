@@ -55,6 +55,85 @@ var App = (function(global) {
     // This class requires an update(), render() and
     // a handleInput() method.
 
+    // Player constructor function.
+    var Player = function() {
+        this.x = 101; // x; // 6/2 * 101 * 101 / 2; // x;
+        this.y = 4 * 83 + 83 / 2;
+        // this.direction = 'stop';
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+        this.sprite = 'images/char-boy.png';
+    };
+
+    Player.prototype.update = function() {
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        // this.y = this.y * this.ySpeed + this.ySpeed / 2;
+
+        if ( this.x < 0 ) {
+            // console.log('1 .we got here');
+            this.x = 0 ; //ctx.canvas.width; // this.xSpeed;
+        } else if (this.x > ctx.canvas.width - 101) {
+            // console.log('2. we got here');
+            this.x = ctx.canvas.width - 101; //  this.xSpeed;
+        }
+
+        if ( this.y < 0 - 83 ) {
+            this.y -= this.ySpeed;
+        } else if ( this.y > ctx.canvas.height - 83 * 2) {
+            this.y -= this.ySpeed; //  - 83;
+        }
+    };
+
+    Player.prototype.render = function() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    };
+
+    /* Method that takes a direction as a string value for an argument then
+     * moves the player accordingly to that argument.
+     */
+    Player.prototype.handleInput = function(direction) {
+        // If a key pressed other than the ones being sought for in the
+        // `allowedKeys` object then undefined will be passed so we ingore
+        // those key movements.
+        if (direction === undefined) {
+            return;
+        }
+
+        // combination of if..else statements to determine the x and y coordinates
+        // of where the player should move to next.
+        if ( direction === 'up' ) {
+            this.xSpeed = 0;
+            this.ySpeed = -83;
+        } else if ( direction === 'down' ) {
+            this.xSpeed = 0;
+            this.ySpeed = 83;
+        } else if ( direction === 'right' ) {
+            this.xSpeed = 101;
+            this.ySpeed = 0;
+        } else if ( direction === 'left' ) {
+            this.xSpeed = -101;
+            this.ySpeed = 0;
+        } else if ( direction === 'stop' ) {
+            this.xSpeed = 0;
+            this.ySpeed = 0;
+        }
+
+        // Update the player here! (Instead of from within engine.js)
+        this.update();
+    };
+
+    // Player.prototype.checkCollision = function() {};
+
+    /* Resets the Player back to it's initital state.
+     */
+    Player.prototype.reset = function() {
+        this.x = 101;
+        this.y = 4 * 83 + 83 / 2;
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+    };
+
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
