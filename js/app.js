@@ -162,5 +162,6 @@ var App = (function(global) {
 
 
     global.allEnemies = allEnemies;
+    global.player = player;
 
 })(this);
