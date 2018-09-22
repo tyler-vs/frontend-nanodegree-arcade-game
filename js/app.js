@@ -50,9 +50,9 @@ Enemy.prototype.render = function() {
 // Place the player object in a variable called player
 
 var allEnemies = [
-    new Enemy(101 * 101 / 2, 0 * 83 + 83 / 2),
-    new Enemy(101 * 101 / 2, 1 * 83 + 83 / 2),
-    new Enemy(101 * 101 / 2, 2 * 83 + 83 / 2)
+    new Enemy(101 * 101 / 2, 0 * 83 + 83 / 2, getRandomInt(1, 5)),
+    new Enemy(101 * 101 / 2, 1 * 83 + 83 / 2, getRandomInt(1, 5)),
+    new Enemy(101 * 101 / 2, 2 * 83 + 83 / 2, getRandomInt(1, 5))
 ];
 
 
