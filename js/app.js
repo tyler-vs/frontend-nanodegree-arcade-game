@@ -22,7 +22,7 @@ var App = (function(global) {
         this.x = x;
         this.y = y;
 
-        //
+        // Speed
         this.xSpeed = speed;
 
         // The image/sprite for our enemies, this uses
