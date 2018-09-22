@@ -9,16 +9,11 @@
 
 var App = (function(global) {
 
+    // Helper function to generate random interval.
+    // found on stack overflow.
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
-    // // Setup the canvas
-    // var canvas = document.getElementsByTagName('canvas')[0];
-    // if (!canvas) {
-    //     throw new Error(`No canvas found: ${canvas}.`);
-    // }
-
 
     // Enemies our player must avoid
     var Enemy = function(x, y, speed) {
