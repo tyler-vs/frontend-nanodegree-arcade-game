@@ -1,7 +1,17 @@
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.x = x;
+    this.y = y;
+
+    this.xSpeed = getRandomInt(1, 5);
+    this.ySpeed = 0;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
