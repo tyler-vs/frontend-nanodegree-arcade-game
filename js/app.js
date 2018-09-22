@@ -25,7 +25,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.xSpeed + dt;
-    this.y += this.ySpeed + dt;
+    // this.y += this.ySpeed + dt;
 
     // var centerX = this.x *
 
