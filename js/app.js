@@ -57,27 +57,30 @@ var App = (function(global) {
 
     // Player constructor function.
     var Player = function() {
-        this.x = 101; // x; // 6/2 * 101 * 101 / 2; // x;
+        this.x = 101 * 2;
         this.y = 4 * 83 + 83 / 2;
-        // this.direction = 'stop';
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.sprite = 'images/char-boy.png';
     };
 
+    // Method that updates the x and y coordinates of the player.
     Player.prototype.update = function() {
+
+        // Update x and y for player position.
         this.x += this.xSpeed;
         this.y += this.ySpeed;
-        // this.y = this.y * this.ySpeed + this.ySpeed / 2;
 
+        // Check to make sure that is the player does not
+        // go out beyond the top or bottom of the canvas.
         if ( this.x < 0 ) {
-            // console.log('1 .we got here');
-            this.x = 0 ; //ctx.canvas.width; // this.xSpeed;
+            this.x = 0 ;
         } else if (this.x > ctx.canvas.width - 101) {
-            // console.log('2. we got here');
-            this.x = ctx.canvas.width - 101; //  this.xSpeed;
+            this.x = ctx.canvas.width - 101;
         }
 
+        // Check to make sure that the player does not
+        // go out beyond the left or right bounds of the canvas.
         if ( this.y < 0 - 83 ) {
             this.y -= this.ySpeed;
         } else if ( this.y > ctx.canvas.height - 83 * 2) {
@@ -85,13 +88,14 @@ var App = (function(global) {
         }
     };
 
+    // Draw the character sprite onto the canvas. Pretty sure the x and
+    // y will refer to the top, left coords of the sprite image.
     Player.prototype.render = function() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 
-    /* Method that takes a direction as a string value for an argument then
-     * moves the player accordingly to that argument.
-     */
+    // Method that takes a direction as a string value for an argument then
+    // moves the player accordingly to that argument.
     Player.prototype.handleInput = function(direction) {
         // If a key pressed other than the ones being sought for in the
         // `allowedKeys` object then undefined will be passed so we ingore
@@ -125,10 +129,9 @@ var App = (function(global) {
 
     // Player.prototype.checkCollision = function() {};
 
-    /* Resets the Player back to it's initital state.
-     */
+    // Resets the Player back to it's initital state.
     Player.prototype.reset = function() {
-        this.x = 101;
+        this.x = 101 * 2;
         this.y = 4 * 83 + 83 / 2;
         this.xSpeed = 0;
         this.ySpeed = 0;
@@ -136,14 +139,13 @@ var App = (function(global) {
 
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
-    // Place the player object in a variable called player
-
     var allEnemies = [
         new Enemy(101 * 101 / 2, 0 * 83 + 83 / 2, getRandomInt(1, 5)),
         new Enemy(101 * 101 / 2, 1 * 83 + 83 / 2, getRandomInt(1, 5)),
         new Enemy(101 * 101 / 2, 2 * 83 + 83 / 2, getRandomInt(1, 5))
     ];
 
+    // Place the player object in a variable called player
     var player = new Player();
 
     // This listens for key presses and sends the keys to your
@@ -160,7 +162,8 @@ var App = (function(global) {
         player.handleInput(allowedKeys[e.keyCode]);
     });
 
-
+    // Add `allEnemeies` and `player` to the global object to
+    // be used outside of this app.js script.
     global.allEnemies = allEnemies;
     global.player = player;
 
