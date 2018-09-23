@@ -73,18 +73,12 @@ var App = (function(global) {
 
         // Check to make sure that is the player does not
         // go out beyond the top or bottom of the canvas.
-        if ( this.x < 0 ) {
-            this.x = 0 ;
-        } else if (this.x > ctx.canvas.width - 101) {
-            this.x = ctx.canvas.width - 101;
+        if (this.x < 0 || this.x > ctx.canvas.width - 101) {
+            this.x -= this.xSpeed;
         }
 
-        // Check to make sure that the player does not
-        // go out beyond the left or right bounds of the canvas.
-        if ( this.y < 0 - 83 ) {
+        if (this.y < -83 || this.y > ctx.canvas.height - (83 * 2)) {
             this.y -= this.ySpeed;
-        } else if ( this.y > ctx.canvas.height - 83 * 2) {
-            this.y -= this.ySpeed; //  - 83;
         }
     };
 
