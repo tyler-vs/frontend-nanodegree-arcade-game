@@ -15,6 +15,11 @@ var App = (function(global) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    var block = {
+        width: 101,
+        height: 83, // art assets is 101, 171 so 171/2 = ~83.
+    };
+
     // Enemies our player must avoid
     var Enemy = function(x, y, speed) {
         // Variables applied to each of our instances go here,
