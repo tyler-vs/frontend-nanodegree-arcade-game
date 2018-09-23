@@ -42,13 +42,29 @@ var App = (function(global) {
         // which will ensure the game runs at the same speed for
         // all computers.
         this.x += this.xSpeed + dt;
-        // var centerX = this.x *
 
-        if (this.x < 0) {
-            this.x = ctx.canvas.width;
-        } else if (this.x > ctx.canvas.width) {
-            this.x = 0;
+
+        // Check for a wall collision
+        if (this.x > ctx.canvas.width) {
+            // Randomize the speed again
+            this.xSpeed = getRandomInt(1,5);
+            // Position back to the left side and add
+            // an negative offset so it re-appears
+            // offscreen.
+            this.x = 0 + -block.width;
         }
+
+        // Check for collision with player)
+        if ( this.x < player.x + 101  &&
+             this.x + 101  > player.x &&
+             this.y < player.y + 83 &&
+             this.y + 83 > player.y ) {
+
+            // The objects are touching
+            // console.log('touching');
+            player.reset();
+        }
+
     };
 
     // Draw the enemy on the screen, required method for game
