@@ -113,6 +113,10 @@ var App = (function(global) {
             score++;
             // Log the score
             console.log(`Score! The score now is: ${score}.`);
+            if (score === 3) {
+                myModal.updateModalContent(`You Win! Hurray, you scored: ${score} many time(s).`);
+                myModal.showModal();
+            }
             // Reset the player (also prevents "re-scoring")
             this.reset();
         }
