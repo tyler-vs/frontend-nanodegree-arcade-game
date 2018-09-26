@@ -101,6 +101,11 @@ var App = (function(global) {
         if (this.y < -83 || this.y > ctx.canvas.height - (83 * 2)) {
             this.y -= this.ySpeed;
         }
+
+        // Reset the speed so that player moves in a step
+        // instead of continously as the Enemies do.
+        this.xSpeed = 0;
+        this.ySpeed = 0;
     };
 
     // Draw the character sprite onto the canvas. Pretty sure the x and
