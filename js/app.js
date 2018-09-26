@@ -14,9 +14,9 @@ var App = (function(global) {
 
     // Helper function to generate random interval.
     // found on stack overflow.
-    function getRandomInt(min, max) {
+    var getRandomInt = function (min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    };
 
     var block = {
         width: 101,
