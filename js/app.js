@@ -107,6 +107,16 @@ var App = (function(global) {
             this.y -= this.ySpeed;
         }
 
+        // Check for winning conditions
+        if (this.y < 83) {
+            // Update the score
+            score++;
+            // Log the score
+            console.log(`Score! The score now is: ${score}.`);
+            // Reset the player (also prevents "re-scoring")
+            this.reset();
+        }
+
         // Reset the speed so that player moves in a step
         // instead of continously as the Enemies do.
         this.xSpeed = 0;
