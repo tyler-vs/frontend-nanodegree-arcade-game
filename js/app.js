@@ -9,6 +9,9 @@
 
 var App = (function(global) {
 
+    // Keeps track of the players total score.
+    var score = 0;
+
     // Helper function to generate random interval.
     // found on stack overflow.
     function getRandomInt(min, max) {
