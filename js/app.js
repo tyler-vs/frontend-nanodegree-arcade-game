@@ -57,8 +57,10 @@ var App = (function(global) {
         // Check for collision with player)
         if ( this.x < player.x + 101  &&
              this.x + 101  > player.x &&
-             this.y < player.y + 83 &&
-             this.y + 83 > player.y ) {
+             // Reduce the total width and divide by 2 (like a circle radius)
+             // for better collision detection.
+             this.y < player.y + ((83 - 20) / 2) &&
+             this.y + ((83 - 20) / 2) > player.y ) {
 
             // The objects are touching
             // console.log('touching');
