@@ -111,8 +111,7 @@ var App = (function(global) {
         if (this.y < 83) {
             // Update the score
             score++;
-            // Log the score
-            console.log(`Score! The score now is: ${score}.`);
+            // Winning conditionals
             if (score === 3) {
                 myModal.updateModalContent(`You Win! Hurray, you scored: ${score} many time(s).`);
                 myModal.showModal();
